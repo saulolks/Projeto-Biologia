@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class PhysicochemicalProperties {
     public static ArrayList<String> phChemicalMap(char codon){
-        ArrayList<String> result;
+        ArrayList<String> result = new ArrayList<>();
 
         switch(codon){
             case 'A':
