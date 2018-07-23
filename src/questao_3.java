@@ -94,7 +94,7 @@ public class questao_3 {
 	}
 	
 	public Info bypass(int[] s, int i, int l, int k){
-		for(int j = 0; j<i; j++){
+		for(int j = 1; j<=i; j++){
 			if(s[j]<k){
 				s[j]++;
 				Info retorno = new Info(s,j);
@@ -111,7 +111,7 @@ public class questao_3 {
 			Info retorno = new Info(s,i+1);
 			return retorno;
 		}else{
-			for(int j = 0; j<l; j++){
+			for(int j = 1; j<=l; j++){
 				if(s[j]<k){
 					s[j]++;
 					Info retorno = new Info(s,j);
