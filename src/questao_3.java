@@ -40,9 +40,9 @@ public class questao_3 {
  }
 	
 	public String BranchAndBoundMotifSearch(char[][] DNA, int t, int n,int l){
-		int[] s = new int[t];
-		for(int j=0; j<t; j++){
-			s[j] = 1;
+		int[] v = new int[l];
+		for(int j=0; j<l; j++){
+			v[j] = 1;
 		}
 		int bestDistance = 99999;
 		String bestWord = new String();
@@ -52,35 +52,35 @@ public class questao_3 {
 			if (i<l){
 				String prefix = new String();
 				for(int j=0; j<i; j++){
-					if(s[j]==1) prefix+="A";
-					else if(s[j]==2) prefix+="C";
-					else if(s[j]==3) prefix+="G";
-					else if(s[j]==4) prefix+="T";
+					if(v[j]==1) prefix+="A";
+					else if(v[j]==2) prefix+="C";
+					else if(v[j]==3) prefix+="G";
+					else if(v[j]==4) prefix+="T";
 				}
 				int optimisticDistance = totaldistance(prefix, DNA);
 				if(optimisticDistance>bestDistance){
-					Info retorno = bypass(s, i, l, 4);
-					s = retorno.getA();
+					Info retorno = bypass(v, i, l, 4);
+					v = retorno.getA();
 					i = retorno.getI();	
 				}else{
-					Info retorno = nextvertex(s, i, l, 4);
-					s = retorno.getA();
+					Info retorno = nextvertex(v, i, l, 4);
+					v = retorno.getA();
 					i = retorno.getI();
 				}
 			}else{
 				String word = new String();
 				for(int j=0; j<l; j++){
-					if(s[j]==1) word+="A";
-					else if(s[j]==2) word+="C";
-					else if(s[j]==3) word+="G";
-					else if(s[j]==4) word+="T";
+					if(v[j]==1) word+="A";
+					else if(v[j]==2) word+="C";
+					else if(v[j]==3) word+="G";
+					else if(v[j]==4) word+="T";
 				}
 				if(totaldistance(word, DNA)<bestDistance){
 					bestDistance = totaldistance(word, DNA);
 					bestWord = word;
 				}
-				Info retorno = nextvertex(s, i, l, 4);
-				s = retorno.getA();
+				Info retorno = nextvertex(v, i, l, 4);
+				v = retorno.getA();
 				i = retorno.getI();
 			}
 		}		
@@ -89,8 +89,31 @@ public class questao_3 {
 	
 	public int totaldistance(String prefix, char DNA[][]){
 		int totaldistance = 0;
+		int distance = 1;
+		Motif[] motifs = null;
 		
-		return 0;
+		for(int k = 0; k<DNA.length; k++){
+			int min = 9999;
+			int posinic = 0;
+			for(int i = 0; i<DNA[0].length - prefix.length() + 1; i++) {
+				for(int j = 0; j<prefix.length()-1; j++) {
+					if(prefix.charAt(j)!= DNA[k][i+j]) {
+						distance++;
+					}
+				}
+				if(distance < min) {
+					min = distance;
+					posinic = i;
+				}		
+			}
+			motifs[k] = new Motif(min,posinic);	
+		}
+		
+		for(int i = 0; i<DNA.length; i++) {
+			totaldistance += motifs[i].getHamdis();
+		}
+		
+		return totaldistance;
 	}
 	
 	public Info bypass(int[] s, int i, int l, int k){

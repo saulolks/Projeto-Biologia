@@ -1,8 +1,8 @@
 
 public class Info {
 	
-	int[] a;
-	int i;
+	private int[] a;
+	private int i;
 	
 	public Info(int[] a, int i) {
 		super();
