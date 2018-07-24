@@ -23,7 +23,8 @@ public class question_2 {
             percentual/=(sequence.length()*4/3);
             aminoacid = codonMapping.getProtein(count.codons[i]);
 
-            System.out.println(count.codons[i] + " | " + dc.format(percentual) + "% |" + PhysicochemicalProperties.phChemicalMap(aminoacid));
+            System.out.println(count.codons[i] + " | " + dc.format(percentual) + "% | " + PhysicochemicalProperties.phChemicalMap(aminoacid));
+            System.out.println("----------------------------------------------");
         }
 
         System.out.println("Total codons counted: " + totalSum);
@@ -112,6 +113,5 @@ public class question_2 {
         newSequence = sequence.replace('T','U');
         return newSequence;
     }
-
-
+    
 }
