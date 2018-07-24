@@ -10,7 +10,7 @@ public class fileReader {
 
         String sequencia = new String();
         try {
-            FileReader arq = new FileReader("sequencia.txt");
+            FileReader arq = new FileReader("sequencia3.txt");
             BufferedReader lerArq = new BufferedReader(arq);
 
             sequencia = lerArq.readLine();

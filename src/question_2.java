@@ -1,15 +1,34 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class question_2 {
     public static void main (String[] args){
         String sequence = fileReader.read();
-        String sequences[] = findCodons(sequence);
-        System.out.println(sequences[0]);
-        System.out.println(sequences[1]);
-        System.out.println(sequences[2]);
-        System.out.println(sequences[3]);
-        System.out.println(sequences[4]);
-        System.out.println(sequences[5]);
+        //String sequences[] = countCodons(sequence);
+        //System.out.println(sequences[0]);
+        //System.out.println(sequences[1]);
+        //System.out.println(sequences[2]);
+        //System.out.println(sequences[3]);
+        //System.out.println(sequences[4]);
+        //System.out.println(sequences[5]);
+
+        occurrenceCodons count = countCodons(sequence);
+        DecimalFormat dc = new DecimalFormat("0.00");
+        int totalSum = 0; double percentual;
+        char aminoacid;
+
+        for(int i = 0; i < 64; i++){
+            totalSum+=count.occurrence[i];
+            percentual = (count.occurrence[i] * 100);
+            percentual/=(sequence.length()*4/3);
+            aminoacid = codonMapping.getProtein(count.codons[i]);
+
+            System.out.println(count.codons[i] + " | " + dc.format(percentual) + "% |" + PhysicochemicalProperties.phChemicalMap(aminoacid));
+        }
+
+        System.out.println("Total codons counted: " + totalSum);
+
+
 
     }
 
@@ -30,28 +49,28 @@ public class question_2 {
         return compReverse;
     }
 
-    private static String[] findCodons(String sequence){
+    private static occurrenceCodons countCodons(String sequence){
         String proteins[] = new String[6];
-        String rnaSequence = transcription(sequence);
-        proteins[0] = toString(codonToProtein(rnaSequence));
+        String sequences[] = new String[6];
+        sequences[0] = transcription(sequence);
+        sequences[1] = toString(changePosition(sequences[0].toCharArray()));
+        sequences[2] = toString(changePosition(sequences[1].toCharArray()));
+        sequences[3] = toString(reverseComplement(sequences[0].toCharArray()));
+        sequences[4] = toString(reverseComplement(sequences[1].toCharArray()));
+        sequences[5] = toString(reverseComplement(sequences[2].toCharArray()));
 
-        char sequenceChar[] = rnaSequence.toCharArray();
-        sequenceChar = changePosition(sequenceChar);
+        int index;
+        occurrenceCodons count = new occurrenceCodons();
+        for(int i = 0; i < 6; i++){
+            for(int j = 0; j < sequences[i].length()-2; j+=3){
+                index = occurrenceCodons.getIndexByCodon(sequences[i].substring(j,j+3));
+                count.occurrence[index]++;
+            }
+        }
 
-        proteins[1] = toString(codonToProtein(toString(sequenceChar)));
 
-        proteins[4] = toString(codonToProtein(toString(reverseComplement(sequenceChar))));
 
-        sequenceChar = changePosition(sequenceChar);
-
-        proteins[5] = toString(codonToProtein(toString(reverseComplement(sequenceChar))));
-
-        proteins[2] = toString((codonToProtein(toString(sequenceChar))));
-
-        proteins[3] = toString(codonToProtein(toString(reverseComplement(rnaSequence.toCharArray()))));
-
-        return proteins;
-
+        return count;
     }
 
     private static char[] changePosition(char[] sequence){
@@ -69,7 +88,7 @@ public class question_2 {
         return sequence;
     }
 
-    public static char[] codonToProtein(String sequence) {
+    public static char[] codonToAminoAcid(String sequence) {
         char proteinString[] = new char[sequence.length()/3];
         char protein;
         String codon;
@@ -93,5 +112,6 @@ public class question_2 {
         newSequence = sequence.replace('T','U');
         return newSequence;
     }
+
 
 }
