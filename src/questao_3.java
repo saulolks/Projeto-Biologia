@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.sun.org.apache.bcel.internal.generic.BranchHandle;
+
 public class questao_3 {
 	
 	static ArrayList<char[]> dados = new ArrayList<>();
@@ -36,17 +38,18 @@ public class questao_3 {
 			 }
 			 System.out.println("");
 		 }
-*/		 	 
+*/		 
+		 System.out.println(BranchAndBoundMotifSearch(amostra,t,n,7));
  }
 	
-	public String BranchAndBoundMotifSearch(char[][] DNA, int t, int n,int l){
-		int[] v = new int[l];
+	public static String BranchAndBoundMotifSearch(char[][] DNA, int t, int n,int l){
+		int[] v = new int[l+1];
 		for(int j=0; j<l; j++){
 			v[j] = 1;
 		}
 		int bestDistance = 99999;
 		String bestWord = new String();
-		int i = 3;
+		int i = 1;
 	  
 		while (i>0){
 			if (i<l){
@@ -87,36 +90,38 @@ public class questao_3 {
 		return bestWord;
 	}
 	
-	public int totaldistance(String prefix, char DNA[][]){
+	public static int totaldistance(String prefix, char DNA[][]){
 		int totaldistance = 0;
 		int distance = 1;
-		Motif[] motifs = null;
+		Motif[] motifs = new Motif[DNA.length];
 		
-		for(int k = 0; k<DNA.length; k++){
+		for(int k = 0; k<DNA.length - 1; k++){
 			int min = 9999;
 			int posinic = 0;
-			for(int i = 0; i<DNA[0].length - prefix.length() + 1; i++) {
-				for(int j = 0; j<prefix.length()-1; j++) {
+			for(int i = 0; i<DNA[0].length - prefix.length(); i++) {
+				distance = 1;
+				for(int j = 0; j<prefix.length(); j++) {
+//					System.out.println(k + " " + i + " " + j);
 					if(prefix.charAt(j)!= DNA[k][i+j]) {
 						distance++;
 					}
 				}
 				if(distance < min) {
 					min = distance;
-					posinic = i;
+					posinic = i+1;
 				}		
 			}
 			motifs[k] = new Motif(min,posinic);	
 		}
 		
-		for(int i = 0; i<DNA.length; i++) {
+		for(int i = 0; i<DNA.length-1; i++) {
 			totaldistance += motifs[i].getHamdis();
 		}
 		
 		return totaldistance;
 	}
 	
-	public Info bypass(int[] s, int i, int l, int k){
+	public static Info bypass(int[] s, int i, int l, int k){
 		for(int j = 1; j<=i; j++){
 			if(s[j]<k){
 				s[j]++;
@@ -128,7 +133,7 @@ public class questao_3 {
 		return retorno;
 	}
 	
-	public Info nextvertex(int[] s, int i, int l, int k){
+	public static Info nextvertex(int[] s, int i, int l, int k){
 		if(i<l){
 			s[i+1] = 1;
 			Info retorno = new Info(s,i+1);
