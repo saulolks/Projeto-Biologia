@@ -47,7 +47,7 @@ public class questao_3 {
 		int bestDistance = 99999;
 		String bestWord = new String();
 		int i = 3;
-	
+	  
 		while (i>0){
 			if (i<l){
 				String prefix = new String();

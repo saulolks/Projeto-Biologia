@@ -4,7 +4,7 @@ public class Motif {
    private int posinic;
 
 public Motif() {
-
+ 
 }
 public Motif(int hamdis, int posinic) {
 	this.hamdis = hamdis;
