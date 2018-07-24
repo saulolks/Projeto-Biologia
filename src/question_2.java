@@ -12,22 +12,10 @@ public class question_2 {
         //System.out.println(sequences[4]);
         //System.out.println(sequences[5]);
 
-        occurrenceCodons count = countCodons(sequence);
-        DecimalFormat dc = new DecimalFormat("0.00");
-        int totalSum = 0; double percentual;
-        char aminoacid;
+        occurrenceCodons count[] = countCodons(sequence);
 
-        for(int i = 0; i < 64; i++){
-            totalSum+=count.occurrence[i];
-            percentual = (count.occurrence[i] * 100);
-            percentual/=(sequence.length()*4/3);
-            aminoacid = codonMapping.getProtein(count.codons[i]);
 
-            System.out.println(count.codons[i] + " | " + dc.format(percentual) + "% | " + PhysicochemicalProperties.phChemicalMap(aminoacid));
-            System.out.println("----------------------------------------------");
-        }
 
-        System.out.println("Total codons counted: " + totalSum);
 
 
 
@@ -50,7 +38,7 @@ public class question_2 {
         return compReverse;
     }
 
-    private static occurrenceCodons countCodons(String sequence){
+    private static occurrenceCodons[] countCodons(String sequence){
         String proteins[] = new String[6];
         String sequences[] = new String[6];
         sequences[0] = transcription(sequence);
@@ -61,15 +49,35 @@ public class question_2 {
         sequences[5] = toString(reverseComplement(sequences[2].toCharArray()));
 
         int index;
-        occurrenceCodons count = new occurrenceCodons();
+        occurrenceCodons count[] = new occurrenceCodons[6];
+        for(int i = 0; i < 6; i++) count[i] = new occurrenceCodons();
+
         for(int i = 0; i < 6; i++){
             for(int j = 0; j < sequences[i].length()-2; j+=3){
                 index = occurrenceCodons.getIndexByCodon(sequences[i].substring(j,j+3));
-                count.occurrence[index]++;
+                count[i].occurrence[index]++;
             }
         }
 
+        DecimalFormat dc = new DecimalFormat("0.00");
+        int totalSum = 0; double percentual;
+        char aminoacid;
 
+        for(int j = 0; j < 6; j++){
+            System.out.println(sequences[j]);
+            for(int i = 0; i < 64; i++){
+                totalSum+=count[j].occurrence[i];
+                percentual = (count[j].occurrence[i] * 100);
+                percentual/=(sequence.length()/3);
+                aminoacid = codonMapping.getProtein(count[j].codons[i]);
+
+                System.out.println(count[j].codons[i] + " | " + dc.format(percentual) + "% | " + PhysicochemicalProperties.phChemicalMap(aminoacid));
+                System.out.println("----------------------------------------------");
+            }
+
+            System.out.println("Total codons counted: " + totalSum);
+            System.out.println();
+        }
 
         return count;
     }
@@ -113,5 +121,5 @@ public class question_2 {
         newSequence = sequence.replace('T','U');
         return newSequence;
     }
-    
+
 }
