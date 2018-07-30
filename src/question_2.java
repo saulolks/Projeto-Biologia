@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -12,25 +16,65 @@ public class question_2 {
         //System.out.println(sequences[4]);
         //System.out.println(sequences[5]);
 
-        occurrenceCodons count = countCodons(sequence);
-        DecimalFormat dc = new DecimalFormat("0.00");
-        int totalSum = 0; double percentual;
-        char aminoacid;
+        String sequences[] = countCodons(sequence);
+        createAminoAcidTable(sequences);
+    }
 
-        for(int i = 0; i < 64; i++){
-            totalSum+=count.occurrence[i];
-            percentual = (count.occurrence[i] * 100);
-            percentual/=(sequence.length()*4/3);
-            aminoacid = codonMapping.getProtein(count.codons[i]);
-
-            System.out.println(count.codons[i] + " | " + dc.format(percentual) + "% | " + PhysicochemicalProperties.phChemicalMap(aminoacid));
-            System.out.println("----------------------------------------------");
+    private static void createAminoAcidTable(String[] sequences) {
+        String aminoAcidsSequences[] = new String[6];
+        for(int i = 0; i < sequences.length; i++){
+            aminoAcidsSequences[i] = toString(codonToAminoAcid(sequences[i]));
         }
 
-        System.out.println("Total codons counted: " + totalSum);
+        OccurrenceAminoAcids count[] = new OccurrenceAminoAcids[6];
+        for(int i = 0; i < 6; i++) count[i] = new OccurrenceAminoAcids();
 
+        int index;
+        for(int i = 0; i < 6; i++){
+            for(int j = 0; j < aminoAcidsSequences[i].length(); j++){
+                index = count[i].getIndexByAminoAcid(aminoAcidsSequences[i].charAt(j));
+                count[i].occurrence[index]++;
+            }
+        }
 
+        DecimalFormat dc = new DecimalFormat("0.00");
+        int totalSum = 0; double percentual;
 
+        for(int i = 0; i < 6; i++) SortFunctions.sort(count[i], 0, 17);
+
+        try{
+            File arquivo = new File("Amino Acid Table.txt");
+            arquivo.createNewFile();
+            FileWriter fileW = new FileWriter (arquivo);//arquivo para escrita
+            BufferedWriter buffW = new BufferedWriter (fileW);
+            for(int j = 0; j < 6; j++){
+                System.out.println(aminoAcidsSequences[j]);
+                buffW.write(aminoAcidsSequences[j]);
+                buffW.newLine();
+                buffW.newLine();
+                for(int i = 0; i < 18; i++){
+                    totalSum+=count[j].occurrence[i];
+                    percentual = (count[j].occurrence[i] * 100);
+                    percentual/=(aminoAcidsSequences[0].length());
+
+                    System.out.println(count[j].aminoAcid[i] + " | " + dc.format(percentual) + "% | " + PhysicochemicalProperties.phChemicalMap(count[j].aminoAcid[i]));
+                    buffW.write(count[j].aminoAcid[i] + " | " + dc.format(percentual) + "% | " + PhysicochemicalProperties.phChemicalMap(count[j].aminoAcid[i]));
+                    buffW.newLine();
+                }
+
+                System.out.println("----------------------------------------------");
+                buffW.write("----------------------------------------------");
+                buffW.newLine();
+                System.out.println("Total amino acids counted: " + totalSum);
+                buffW.write("Total amino acids counted: " + totalSum);
+                buffW.newLine();
+                buffW.newLine();
+                System.out.println();
+                totalSum = 0;
+            }
+        }catch(IOException io){
+            System.out.println("something wrong happens");
+        }
     }
 
     public static char[] reverseComplement(char[] sequence) {
@@ -50,7 +94,8 @@ public class question_2 {
         return compReverse;
     }
 
-    private static occurrenceCodons countCodons(String sequence){
+    private static String[] countCodons(String sequence){
+
         String proteins[] = new String[6];
         String sequences[] = new String[6];
         sequences[0] = transcription(sequence);
@@ -61,19 +106,57 @@ public class question_2 {
         sequences[5] = toString(reverseComplement(sequences[2].toCharArray()));
 
         int index;
-        occurrenceCodons count = new occurrenceCodons();
+        occurrenceCodons count[] = new occurrenceCodons[6];
+        for(int i = 0; i < 6; i++) count[i] = new occurrenceCodons();
+
         for(int i = 0; i < 6; i++){
             for(int j = 0; j < sequences[i].length()-2; j+=3){
                 index = occurrenceCodons.getIndexByCodon(sequences[i].substring(j,j+3));
-                count.occurrence[index]++;
+                count[i].occurrence[index]++;
             }
         }
 
+        DecimalFormat dc = new DecimalFormat("0.00");
+        int totalSum = 0; double percentual;
+        char aminoacid;
 
+        for(int i = 0; i < 6; i++) SortFunctions.sort(count[i], 0, 63);
 
-        return count;
+        try{
+            File arquivo = new File("Codon Table.txt");
+            arquivo.createNewFile();
+            FileWriter fileW = new FileWriter (arquivo);//arquivo para escrita
+            BufferedWriter buffW = new BufferedWriter (fileW);
+            for(int j = 0; j < 6; j++){
+                System.out.println(sequences[j]);
+                buffW.write(sequences[j]);
+                buffW.newLine();
+                buffW.newLine();
+                for(int i = 0; i < 64; i++){
+                    totalSum+=count[j].occurrence[i];
+                    percentual = (count[j].occurrence[i] * 100);
+                    percentual/=(sequence.length()/3);
+                    aminoacid = OccurrenceAminoAcids.getProtein(count[j].codons[i]);
+
+                    System.out.println(count[j].codons[i] + " | " + dc.format(percentual) + "% | " + PhysicochemicalProperties.phChemicalMap(aminoacid));
+                    buffW.write(count[j].codons[i] + " | " + dc.format(percentual) + "% | " + PhysicochemicalProperties.phChemicalMap(aminoacid));
+                    buffW.newLine();
+                }
+                buffW.write("----------------------------------------------");
+                buffW.newLine();
+
+                System.out.println("Total codons counted: " + totalSum);
+                buffW.write("Total codons counted: " + totalSum);
+                buffW.newLine();
+                buffW.newLine();
+                System.out.println();
+                totalSum = 0;
+            }
+        }catch(IOException IO){
+
+        }
+        return sequences;
     }
-
     private static char[] changePosition(char[] sequence){
         char aux = ' ';
         for(int i = 0; i < sequence.length; i++){
@@ -90,17 +173,17 @@ public class question_2 {
     }
 
     public static char[] codonToAminoAcid(String sequence) {
-        char proteinString[] = new char[sequence.length()/3];
+        char aminoAcidString[] = new char[sequence.length()/3];
         char protein;
         String codon;
         int j = 0;
         for(int i = 0; i < sequence.length()-2; i+=3){
             codon = sequence.substring(i, i+3);
-            protein = codonMapping.getProtein(codon);
-            if(protein != '-') proteinString[j++] = protein;
+            protein = OccurrenceAminoAcids.getProtein(codon);
+            if(protein != '-') aminoAcidString[j++] = protein;
         }
 
-        return proteinString;
+        return aminoAcidString;
     }
 
     public static String toString(char[] letters){
@@ -113,5 +196,7 @@ public class question_2 {
         newSequence = sequence.replace('T','U');
         return newSequence;
     }
-    
 }
+
+//O algoritmo de Merge Sort foi retirado do site Geeks for Geeks, disponível em: https://www.geeksforgeeks.org/merge-sort/,
+//e adaptado para realizar o trabalho com o objeto OccurenceCodons e de forma decrescente.
