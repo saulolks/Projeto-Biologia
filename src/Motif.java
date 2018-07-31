@@ -44,8 +44,6 @@ public boolean equals(Object obj) {
 			return false;
 	} else if (!motif.equals(other.motif))
 		return false;
-	if (posinic != other.posinic)
-		return false;
 	return true;
 } 
 }
