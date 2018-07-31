@@ -10,27 +10,58 @@ public class questao_3 {
 	
 	static ArrayList<char[]> dados = new ArrayList<>();
 	static ArrayList<String> ProtStr = new ArrayList<String>();
-   
+    static ArrayList<ArrayList<Motif>> motifS = new ArrayList<ArrayList<Motif>>();
+    static ArrayList<ArrayList<Motif>> cMotifS = new ArrayList<ArrayList<Motif>>();
 	public static void main (String[] args) throws IOException{
 			
 	 FileReader fileReader = new FileReader("sequencia.txt");
 	 BufferedReader reader = new BufferedReader(fileReader);
 	 int t = 0, n = 0;
-	 
+	 String sequence = "";
 		 while(reader.ready()){
 			
 			 String str = reader.readLine();
 				if(str.charAt(0) != '>'){
-					
-					dados.add(str.toCharArray());
+					sequence+=str;				
 				}	
-		 }	
+		 }
+		 dados.add(sequence.toCharArray());
 		 fileReader.close();
 		 reader.close();
 		 
+		 int y = sequence.length();
 		 t = dados.size();
 		 n = dados.get(0).length;
+	
 		 char[][] amostra = dados.toArray(new char[t][n]);
+		 		
+		for (int i=0; i<amostra.length;i++){
+		    for(int j=0; j<amostra[i].length; j++) {
+		    	if(amostra[i][j] == 'T'){
+			    	amostra[i][j] = 'U';
+			    }
+		    }
+		}
+		
+		char cAmostra[][] = new char[t][n];
+		
+		y--;
+		
+		for (int i=0; i<amostra.length;i++){
+		    for(int j=0; j<amostra[i].length;j++) {
+		    	if(amostra[i][j]== 'U'){
+			    	cAmostra[i][y] = 'A';
+			    }else if(amostra[i][j]=='C'){
+			    	cAmostra[i][y] = 'G';
+			    }else if(amostra[i][j]=='G'){
+			    	cAmostra[i][y] = 'C';
+			    }else if(amostra[i][j]=='A'){
+			    	cAmostra[i][y] = 'U';
+			    }
+				y--;
+		    }					
+		}
+		
 		 
 /*		 for(int i =0; i<t; i++){
 			 for(int j = 0; j<amostra[i].length; j++){
@@ -39,10 +70,28 @@ public class questao_3 {
 			 System.out.println("");
 		 }
 */		 
-		 System.out.println(BranchAndBoundMotifSearch(amostra,t,n,7));
+		 for(int i = 0; i<amostra.length; i++) {
+			 motifS.add(new ArrayList<Motif>());
+			 cMotifS.add(new ArrayList<Motif>());
+		 }
+		 System.out.println("Best Word = " + BranchAndBoundMotifSearch(amostra,t,n,6, 0));
+		 
+		 for(int i = 0; i<motifS.size(); i++) {
+			 for (int j = 0; j<motifS.size(); j++) {
+				 System.out.println(motifS.get(j).toString());
+			 }	 
+		 }
+		 
+		 System.out.println("Complemento Reverso - Best Word = " + BranchAndBoundMotifSearch(cAmostra,t,n,6, 1));
+		 
+		 for(int i = 0; i<cMotifS.size(); i++) {
+			 for (int j = 0; j<cMotifS.size(); j++) {
+				 System.out.println(cMotifS.get(j).toString());
+			 }	 
+		 }
  }
 	
-	public static String BranchAndBoundMotifSearch(char[][] DNA, int t, int n,int l){
+	public static String BranchAndBoundMotifSearch(char[][] DNA, int t, int n,int l, int C){
 		int[] v = new int[l+1];
 		for(int j=0; j<l; j++){
 			v[j] = 1;
@@ -58,9 +107,9 @@ public class questao_3 {
 					if(v[j]==1) prefix+="A";
 					else if(v[j]==2) prefix+="C";
 					else if(v[j]==3) prefix+="G";
-					else if(v[j]==4) prefix+="T";
+					else if(v[j]==4) prefix+="U";
 				}
-				int optimisticDistance = totaldistance(prefix, DNA);
+				int optimisticDistance = totaldistance(prefix, DNA, l, C);
 				if(optimisticDistance>bestDistance){
 					Info retorno = bypass(v, i, l, 4);
 					v = retorno.getA();
@@ -76,10 +125,10 @@ public class questao_3 {
 					if(v[j]==1) word+="A";
 					else if(v[j]==2) word+="C";
 					else if(v[j]==3) word+="G";
-					else if(v[j]==4) word+="T";
+					else if(v[j]==4) word+="U";
 				}
-				if(totaldistance(word, DNA)<bestDistance){
-					bestDistance = totaldistance(word, DNA);
+				if(totaldistance(word, DNA, l, C)<bestDistance){
+					bestDistance = totaldistance(word, DNA, l, C);
 					bestWord = word;
 				}
 				Info retorno = nextvertex(v, i, l, 4);
@@ -90,12 +139,12 @@ public class questao_3 {
 		return bestWord;
 	}
 	
-	public static int totaldistance(String prefix, char DNA[][]){
+	public static int totaldistance(String prefix, char DNA[][], int l, int C){
 		int totaldistance = 0;
 		int distance = 1;
 		Motif[] motifs = new Motif[DNA.length];
 		
-		for(int k = 0; k<DNA.length - 1; k++){
+		for(int k = 0; k<DNA.length; k++){
 			int min = 9999;
 			int posinic = 0;
 			for(int i = 0; i<DNA[0].length - prefix.length(); i++) {
@@ -109,12 +158,29 @@ public class questao_3 {
 				if(distance < min) {
 					min = distance;
 					posinic = i+1;
-				}		
+				}
+				Motif aux = new Motif(min, posinic, prefix);
+				if(C == 0) {
+					if(prefix.length()==l && distance < 3) {
+						if(motifS.get(k).contains(aux) == false) {
+							motifS.get(k).add(aux);
+						}
+							
+					}
+				}else if(C == 1) {
+					if(prefix.length()==l && distance < 3) {
+						if(cMotifS.get(k).contains(aux) == false) {
+							cMotifS.get(k).add(aux);
+						}
+							
+					}
+				}
+				
 			}
-			motifs[k] = new Motif(min,posinic);	
+			motifs[k] = new Motif(min,posinic, prefix);	
 		}
 		
-		for(int i = 0; i<DNA.length-1; i++) {
+		for(int i = 0; i<DNA.length; i++) {
 			totaldistance += motifs[i].getHamdis();
 		}
 		
