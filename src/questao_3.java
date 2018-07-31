@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import com.sun.org.apache.bcel.internal.generic.BranchHandle;
 
@@ -33,7 +34,7 @@ public class questao_3 {
 		 t = dados.size();
 		 n = dados.get(0).length;
 	
-		 char[][] amostra = dados.toArray(new char[t][n]);
+		char[][] amostra = dados.toArray(new char[t][n]);
 		 		
 		for (int i=0; i<amostra.length;i++){
 		    for(int j=0; j<amostra[i].length; j++) {
@@ -70,11 +71,16 @@ public class questao_3 {
 			 System.out.println("");
 		 }
 */		 
+		 Scanner entrada = new Scanner(System.in);
+		 int tMotif = 0;
+		 System.out.print("Digite o tamanho do Motif: ");
+		 tMotif = entrada.nextInt();
+		
 		 for(int i = 0; i<amostra.length; i++) {
 			 motifS.add(new ArrayList<Motif>());
 			 cMotifS.add(new ArrayList<Motif>());
 		 }
-		 System.out.println("Best Word = " + BranchAndBoundMotifSearch(amostra,t,n,6, 0));
+		 System.out.println("Best Word = " + BranchAndBoundMotifSearch(amostra,t,n,tMotif, 0));
 		 
 		 for(int i = 0; i<motifS.size(); i++) {
 			 for (int j = 0; j<motifS.size(); j++) {
@@ -82,7 +88,7 @@ public class questao_3 {
 			 }	 
 		 }
 		 
-		 System.out.println("Complemento Reverso - Best Word = " + BranchAndBoundMotifSearch(cAmostra,t,n,6, 1));
+		 System.out.println("Complemento Reverso - Best Word = " + BranchAndBoundMotifSearch(cAmostra,t,n,tMotif, 1));
 		 
 		 for(int i = 0; i<cMotifS.size(); i++) {
 			 for (int j = 0; j<cMotifS.size(); j++) {
@@ -159,16 +165,16 @@ public class questao_3 {
 					min = distance;
 					posinic = i+1;
 				}
-				Motif aux = new Motif(min, posinic, prefix);
+				Motif aux = new Motif(distance, posinic, prefix);
 				if(C == 0) {
-					if(prefix.length()==l && distance < 3) {
+					if(prefix.length()==l && distance <= prefix.length()/3) {
 						if(motifS.get(k).contains(aux) == false) {
 							motifS.get(k).add(aux);
 						}
 							
 					}
 				}else if(C == 1) {
-					if(prefix.length()==l && distance < 3) {
+					if(prefix.length()==l && distance <= prefix.length()/3) {
 						if(cMotifS.get(k).contains(aux) == false) {
 							cMotifS.get(k).add(aux);
 						}
