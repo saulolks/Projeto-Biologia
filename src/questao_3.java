@@ -27,15 +27,24 @@ public class questao_3 {
 				}	
 		 }
 		 dados.add(sequence.toCharArray());
+		 
 		 fileReader.close();
 		 reader.close();
 		 
-		 int y = sequence.length();
-		 t = dados.size();
-		 n = dados.get(0).length;
+		 
+		 
 	
 		char[][] amostra = dados.toArray(new char[t][n]);
-		 		
+		
+		
+/*		
+		for(int i =0; i<t; i++){
+			 for(int j = 0; j<amostra[i].length; j++){
+				 System.out.print(amostra[i][j]);
+			 }
+			 System.out.println("");
+		 }
+*/		
 		for (int i=0; i<amostra.length;i++){
 		    for(int j=0; j<amostra[i].length; j++) {
 		    	if(amostra[i][j] == 'T'){
@@ -44,35 +53,27 @@ public class questao_3 {
 		    }
 		}
 		
-		char cAmostra[][] = new char[t][n];
-		
+		char cAmostra[] = new char[amostra[0].length];
+		int y = amostra[0].length;
 		y--;
-		
-		for (int i=0; i<amostra.length;i++){
-		    for(int j=0; j<amostra[i].length;j++) {
-		    	if(amostra[i][j]== 'U'){
-			    	cAmostra[i][y] = 'A';
-			    }else if(amostra[i][j]=='C'){
-			    	cAmostra[i][y] = 'G';
-			    }else if(amostra[i][j]=='G'){
-			    	cAmostra[i][y] = 'C';
-			    }else if(amostra[i][j]=='A'){
-			    	cAmostra[i][y] = 'U';
-			    }
-				y--;
-		    }					
-		}
-		
-		 
-/*		 for(int i =0; i<t; i++){
-			 for(int j = 0; j<amostra[i].length; j++){
-				 System.out.print(amostra[i][j]);
-			 }
-			 System.out.println("");
-		 }
-*/		 
+	    for(int j=0; j<amostra[0].length;j++) {
+	    	if(amostra[0][j]== 'U'){
+		    	cAmostra[y] = 'A';
+		    }else if(amostra[0][j]=='C'){
+		    	cAmostra[y] = 'G';
+		    }else if(amostra[0][j]=='G'){
+		    	cAmostra[y] = 'C';
+		    }else if(amostra[0][j]=='A'){
+		    	cAmostra[y] = 'U';
+		    }
+			y--;
+	    }
+	    dados.add(cAmostra);
+	    amostra = dados.toArray(new char[t][n]);	 
 		 Scanner entrada = new Scanner(System.in);
 		 int tMotif = 0;
+		 t = dados.size();
+		 n = dados.get(0).length;
 		 System.out.print("Digite o tamanho do Motif: ");
 		 tMotif = entrada.nextInt();
 		
@@ -80,21 +81,24 @@ public class questao_3 {
 			 motifS.add(new ArrayList<Motif>());
 			 cMotifS.add(new ArrayList<Motif>());
 		 }
+		 System.out.println(amostra.length);
 		 System.out.println("Best Word = " + BranchAndBoundMotifSearch(amostra,t,n,tMotif, 0));
 		 
-		 for(int i = 0; i<motifS.size(); i++) {
-			 for (int j = 0; j<motifS.size(); j++) {
-				 System.out.println(motifS.get(j).toString());
-			 }	 
-		 }
 		 
-		 System.out.println("Complemento Reverso - Best Word = " + BranchAndBoundMotifSearch(cAmostra,t,n,tMotif, 1));
 		 
+		 for (int j = 0; j<motifS.size(); j++) {
+			 System.out.println("Sequencia: " + (j+1) + "\n\n");
+			 System.out.print(motifS.get(j).toString());
+		 }	 
+		 
+		 //System.out.println("Complemento Reverso - Best Word = " + BranchAndBoundMotifSearch(cAmostra,t,n,tMotif, 1));
+		/* 
 		 for(int i = 0; i<cMotifS.size(); i++) {
 			 for (int j = 0; j<cMotifS.size(); j++) {
 				 System.out.println(cMotifS.get(j).toString());
 			 }	 
 		 }
+		 */
  }
 	
 	public static String BranchAndBoundMotifSearch(char[][] DNA, int t, int n,int l, int C){
@@ -165,6 +169,7 @@ public class questao_3 {
 					min = distance;
 					posinic = i+1;
 				}
+				
 				Motif aux = new Motif(distance, posinic, prefix);
 				if(C == 0) {
 					if(prefix.length()==l && distance <= prefix.length()/3) {
@@ -181,11 +186,11 @@ public class questao_3 {
 							
 					}
 				}
-				
-			}
-			motifs[k] = new Motif(min,posinic, prefix);	
-		}
 		
+			 }
+			motifs[k] = new Motif(min,posinic, prefix);	
+		
+		}	
 		for(int i = 0; i<DNA.length; i++) {
 			totaldistance += motifs[i].getHamdis();
 		}
