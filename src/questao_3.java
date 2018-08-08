@@ -20,7 +20,6 @@ public class questao_3 {
 	 int t = 0, n = 0;
 	 String sequence = "";
 		 while(reader.ready()){
-			
 			 String str = reader.readLine();
 				if(str.charAt(0) != '>'){
 					sequence+=str;				
@@ -76,20 +75,25 @@ public class questao_3 {
 		 n = dados.get(0).length;
 		 System.out.print("Digite o tamanho do Motif: ");
 		 tMotif = entrada.nextInt();
-		
+		 entrada.close();
 		 for(int i = 0; i<amostra.length; i++) {
 			 motifS.add(new ArrayList<Motif>());
 			 cMotifS.add(new ArrayList<Motif>());
 		 }
-		 System.out.println(amostra.length);
-		 System.out.println("Best Word = " + BranchAndBoundMotifSearch(amostra,t,n,tMotif, 0));
+		 System.out.println("Número de Sequências: " + amostra.length);
+		 long tempoInicio = System.currentTimeMillis();
+		 System.out.println("Best Word = " + BranchAndBoundMotifSearch(amostra,t,n,tMotif));
 		 
 		 
-		 
+		
 		 for (int j = 0; j<motifS.size(); j++) {
 			 System.out.println("Sequencia: " + (j+1) + "\n\n");
 			 System.out.print(motifS.get(j).toString());
-		 }	 
+		 }
+		 
+		 
+		 long tempoFinal = (System.currentTimeMillis());
+		 System.out.println("\nTempo de Busca(s): " + (tempoFinal - tempoInicio)/1000);
 		 
 		 //System.out.println("Complemento Reverso - Best Word = " + BranchAndBoundMotifSearch(cAmostra,t,n,tMotif, 1));
 		/* 
@@ -101,8 +105,8 @@ public class questao_3 {
 		 */
  }
 	
-	public static String BranchAndBoundMotifSearch(char[][] DNA, int t, int n,int l, int C){
-		int[] v = new int[l+1];
+	public static String BranchAndBoundMotifSearch(char[][] DNA, int t, int n,int l){
+		int[] v = new int[l];
 		for(int j=0; j<l; j++){
 			v[j] = 1;
 		}
@@ -119,7 +123,7 @@ public class questao_3 {
 					else if(v[j]==3) prefix+="G";
 					else if(v[j]==4) prefix+="U";
 				}
-				int optimisticDistance = totaldistance(prefix, DNA, l, C);
+				int optimisticDistance = totaldistance(prefix, DNA, l);
 				if(optimisticDistance>bestDistance){
 					Info retorno = bypass(v, i, l, 4);
 					v = retorno.getA();
@@ -137,8 +141,8 @@ public class questao_3 {
 					else if(v[j]==3) word+="G";
 					else if(v[j]==4) word+="U";
 				}
-				if(totaldistance(word, DNA, l, C)<bestDistance){
-					bestDistance = totaldistance(word, DNA, l, C);
+				if(totaldistance(word, DNA, l)<bestDistance){
+					bestDistance = totaldistance(word, DNA, l);
 					bestWord = word;
 				}
 				Info retorno = nextvertex(v, i, l, 4);
@@ -149,18 +153,17 @@ public class questao_3 {
 		return bestWord;
 	}
 	
-	public static int totaldistance(String prefix, char DNA[][], int l, int C){
+	public static int totaldistance(String prefix, char DNA[][], int l){
 		int totaldistance = 0;
-		int distance = 1;
+		int distance = 0;
 		Motif[] motifs = new Motif[DNA.length];
 		
 		for(int k = 0; k<DNA.length; k++){
 			int min = 9999;
 			int posinic = 0;
 			for(int i = 0; i<DNA[0].length - prefix.length(); i++) {
-				distance = 1;
+				distance = 0;
 				for(int j = 0; j<prefix.length(); j++) {
-//					System.out.println(k + " " + i + " " + j);
 					if(prefix.charAt(j)!= DNA[k][i+j]) {
 						distance++;
 					}
@@ -171,25 +174,15 @@ public class questao_3 {
 				}
 				
 				Motif aux = new Motif(distance, posinic, prefix);
-				if(C == 0) {
-					if(prefix.length()==l && distance <= prefix.length()/3) {
-						if(motifS.get(k).contains(aux) == false) {
-							motifS.get(k).add(aux);
-						}
-							
+				
+				if(prefix.length()==l && distance <= prefix.length()/3) {
+					if(motifS.get(k).contains(aux) == false) {
+						motifS.get(k).add(aux);
 					}
-				}else if(C == 1) {
-					if(prefix.length()==l && distance <= prefix.length()/3) {
-						if(cMotifS.get(k).contains(aux) == false) {
-							cMotifS.get(k).add(aux);
-						}
-							
-					}
-				}
+				}		
 		
 			 }
-			motifs[k] = new Motif(min,posinic, prefix);	
-		
+			motifs[k] = new Motif(min,posinic, prefix);		
 		}	
 		for(int i = 0; i<DNA.length; i++) {
 			totaldistance += motifs[i].getHamdis();
@@ -199,9 +192,9 @@ public class questao_3 {
 	}
 	
 	public static Info bypass(int[] s, int i, int l, int k){
-		for(int j = 1; j<=i; j++){
-			if(s[j]<k){
-				s[j]++;
+		for(int j = i; j>=1; j--){
+			if(s[j-1]<k){
+				s[j-1]++;
 				Info retorno = new Info(s,j);
 				return retorno;
 			}
@@ -212,13 +205,13 @@ public class questao_3 {
 	
 	public static Info nextvertex(int[] s, int i, int l, int k){
 		if(i<l){
-			s[i+1] = 1;
+			s[i] = 1;
 			Info retorno = new Info(s,i+1);
 			return retorno;
 		}else{
-			for(int j = 1; j<=l; j++){
-				if(s[j]<k){
-					s[j]++;
+			for(int j = l; j>=1; j--){
+				if(s[j-1]<k){
+					s[j-1]++;
 					Info retorno = new Info(s,j);
 					return retorno;
 				}
