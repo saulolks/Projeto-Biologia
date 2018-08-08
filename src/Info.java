@@ -1,4 +1,4 @@
-
+//Classe implementada para o retorno duplo das funções bypass e nextVertex.
 public class Info {
 	
 	private int[] a;

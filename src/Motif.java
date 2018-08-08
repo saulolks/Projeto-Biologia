@@ -1,4 +1,4 @@
-
+//Classe Implementada para armazenar informações dos motifs.
 public class Motif {
    private int hamdis;
    private int posinic;

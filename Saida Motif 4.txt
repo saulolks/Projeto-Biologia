@@ -1,0 +1,516 @@
+Número de Sequências: 2
+Melhor Distância Hamming(min): 0
+
+Motif 1 = (Motif= AAAA, Hamming Distance Total= 0)
+
+Motif 2 = (Motif= AAAC, Hamming Distance Total= 0)
+
+Motif 3 = (Motif= AAAG, Hamming Distance Total= 0)
+
+Motif 4 = (Motif= AAAU, Hamming Distance Total= 0)
+
+Motif 5 = (Motif= AACA, Hamming Distance Total= 0)
+
+Motif 6 = (Motif= AACC, Hamming Distance Total= 0)
+
+Motif 7 = (Motif= AACG, Hamming Distance Total= 0)
+
+Motif 8 = (Motif= AACU, Hamming Distance Total= 0)
+
+Motif 9 = (Motif= AAGA, Hamming Distance Total= 0)
+
+Motif 10 = (Motif= AAGC, Hamming Distance Total= 0)
+
+Motif 11 = (Motif= AAGG, Hamming Distance Total= 0)
+
+Motif 12 = (Motif= AAGU, Hamming Distance Total= 0)
+
+Motif 13 = (Motif= AAUA, Hamming Distance Total= 0)
+
+Motif 14 = (Motif= AAUC, Hamming Distance Total= 0)
+
+Motif 15 = (Motif= AAUG, Hamming Distance Total= 0)
+
+Motif 16 = (Motif= AAUU, Hamming Distance Total= 0)
+
+Motif 17 = (Motif= ACAA, Hamming Distance Total= 0)
+
+Motif 18 = (Motif= ACAC, Hamming Distance Total= 0)
+
+Motif 19 = (Motif= ACAG, Hamming Distance Total= 0)
+
+Motif 20 = (Motif= ACAU, Hamming Distance Total= 0)
+
+Motif 21 = (Motif= ACCA, Hamming Distance Total= 0)
+
+Motif 22 = (Motif= ACCC, Hamming Distance Total= 0)
+
+Motif 23 = (Motif= ACCG, Hamming Distance Total= 0)
+
+Motif 24 = (Motif= ACCU, Hamming Distance Total= 0)
+
+Motif 25 = (Motif= ACGA, Hamming Distance Total= 0)
+
+Motif 26 = (Motif= ACGC, Hamming Distance Total= 0)
+
+Motif 27 = (Motif= ACGG, Hamming Distance Total= 0)
+
+Motif 28 = (Motif= ACGU, Hamming Distance Total= 0)
+
+Motif 29 = (Motif= ACUA, Hamming Distance Total= 0)
+
+Motif 30 = (Motif= ACUC, Hamming Distance Total= 0)
+
+Motif 31 = (Motif= ACUG, Hamming Distance Total= 0)
+
+Motif 32 = (Motif= ACUU, Hamming Distance Total= 0)
+
+Motif 33 = (Motif= AGAA, Hamming Distance Total= 0)
+
+Motif 34 = (Motif= AGAC, Hamming Distance Total= 0)
+
+Motif 35 = (Motif= AGAG, Hamming Distance Total= 0)
+
+Motif 36 = (Motif= AGAU, Hamming Distance Total= 0)
+
+Motif 37 = (Motif= AGCA, Hamming Distance Total= 0)
+
+Motif 38 = (Motif= AGCC, Hamming Distance Total= 0)
+
+Motif 39 = (Motif= AGCG, Hamming Distance Total= 0)
+
+Motif 40 = (Motif= AGCU, Hamming Distance Total= 0)
+
+Motif 41 = (Motif= AGGA, Hamming Distance Total= 0)
+
+Motif 42 = (Motif= AGGC, Hamming Distance Total= 0)
+
+Motif 43 = (Motif= AGGG, Hamming Distance Total= 0)
+
+Motif 44 = (Motif= AGGU, Hamming Distance Total= 0)
+
+Motif 45 = (Motif= AGUA, Hamming Distance Total= 0)
+
+Motif 46 = (Motif= AGUC, Hamming Distance Total= 0)
+
+Motif 47 = (Motif= AGUG, Hamming Distance Total= 0)
+
+Motif 48 = (Motif= AGUU, Hamming Distance Total= 0)
+
+Motif 49 = (Motif= AUAA, Hamming Distance Total= 0)
+
+Motif 50 = (Motif= AUAC, Hamming Distance Total= 0)
+
+Motif 51 = (Motif= AUAG, Hamming Distance Total= 0)
+
+Motif 52 = (Motif= AUAU, Hamming Distance Total= 0)
+
+Motif 53 = (Motif= AUCA, Hamming Distance Total= 0)
+
+Motif 54 = (Motif= AUCC, Hamming Distance Total= 0)
+
+Motif 55 = (Motif= AUCG, Hamming Distance Total= 0)
+
+Motif 56 = (Motif= AUCU, Hamming Distance Total= 0)
+
+Motif 57 = (Motif= AUGA, Hamming Distance Total= 0)
+
+Motif 58 = (Motif= AUGC, Hamming Distance Total= 0)
+
+Motif 59 = (Motif= AUGG, Hamming Distance Total= 0)
+
+Motif 60 = (Motif= AUGU, Hamming Distance Total= 0)
+
+Motif 61 = (Motif= AUUA, Hamming Distance Total= 0)
+
+Motif 62 = (Motif= AUUC, Hamming Distance Total= 0)
+
+Motif 63 = (Motif= AUUG, Hamming Distance Total= 0)
+
+Motif 64 = (Motif= AUUU, Hamming Distance Total= 0)
+
+Motif 65 = (Motif= CAAA, Hamming Distance Total= 0)
+
+Motif 66 = (Motif= CAAC, Hamming Distance Total= 0)
+
+Motif 67 = (Motif= CAAG, Hamming Distance Total= 0)
+
+Motif 68 = (Motif= CAAU, Hamming Distance Total= 0)
+
+Motif 69 = (Motif= CACA, Hamming Distance Total= 0)
+
+Motif 70 = (Motif= CACC, Hamming Distance Total= 0)
+
+Motif 71 = (Motif= CACG, Hamming Distance Total= 0)
+
+Motif 72 = (Motif= CACU, Hamming Distance Total= 0)
+
+Motif 73 = (Motif= CAGA, Hamming Distance Total= 0)
+
+Motif 74 = (Motif= CAGC, Hamming Distance Total= 0)
+
+Motif 75 = (Motif= CAGG, Hamming Distance Total= 0)
+
+Motif 76 = (Motif= CAGU, Hamming Distance Total= 0)
+
+Motif 77 = (Motif= CAUA, Hamming Distance Total= 0)
+
+Motif 78 = (Motif= CAUC, Hamming Distance Total= 0)
+
+Motif 79 = (Motif= CAUG, Hamming Distance Total= 0)
+
+Motif 80 = (Motif= CAUU, Hamming Distance Total= 0)
+
+Motif 81 = (Motif= CCAA, Hamming Distance Total= 0)
+
+Motif 82 = (Motif= CCAC, Hamming Distance Total= 0)
+
+Motif 83 = (Motif= CCAG, Hamming Distance Total= 0)
+
+Motif 84 = (Motif= CCAU, Hamming Distance Total= 0)
+
+Motif 85 = (Motif= CCCA, Hamming Distance Total= 0)
+
+Motif 86 = (Motif= CCCC, Hamming Distance Total= 0)
+
+Motif 87 = (Motif= CCCG, Hamming Distance Total= 0)
+
+Motif 88 = (Motif= CCCU, Hamming Distance Total= 0)
+
+Motif 89 = (Motif= CCGA, Hamming Distance Total= 0)
+
+Motif 90 = (Motif= CCGC, Hamming Distance Total= 0)
+
+Motif 91 = (Motif= CCGG, Hamming Distance Total= 0)
+
+Motif 92 = (Motif= CCGU, Hamming Distance Total= 0)
+
+Motif 93 = (Motif= CCUA, Hamming Distance Total= 0)
+
+Motif 94 = (Motif= CCUC, Hamming Distance Total= 0)
+
+Motif 95 = (Motif= CCUG, Hamming Distance Total= 0)
+
+Motif 96 = (Motif= CCUU, Hamming Distance Total= 0)
+
+Motif 97 = (Motif= CGAA, Hamming Distance Total= 0)
+
+Motif 98 = (Motif= CGAC, Hamming Distance Total= 0)
+
+Motif 99 = (Motif= CGAG, Hamming Distance Total= 0)
+
+Motif 100 = (Motif= CGAU, Hamming Distance Total= 0)
+
+Motif 101 = (Motif= CGCA, Hamming Distance Total= 0)
+
+Motif 102 = (Motif= CGCC, Hamming Distance Total= 0)
+
+Motif 103 = (Motif= CGCG, Hamming Distance Total= 0)
+
+Motif 104 = (Motif= CGCU, Hamming Distance Total= 0)
+
+Motif 105 = (Motif= CGGA, Hamming Distance Total= 0)
+
+Motif 106 = (Motif= CGGC, Hamming Distance Total= 0)
+
+Motif 107 = (Motif= CGGG, Hamming Distance Total= 0)
+
+Motif 108 = (Motif= CGGU, Hamming Distance Total= 0)
+
+Motif 109 = (Motif= CGUA, Hamming Distance Total= 0)
+
+Motif 110 = (Motif= CGUC, Hamming Distance Total= 0)
+
+Motif 111 = (Motif= CGUG, Hamming Distance Total= 0)
+
+Motif 112 = (Motif= CGUU, Hamming Distance Total= 0)
+
+Motif 113 = (Motif= CUAA, Hamming Distance Total= 0)
+
+Motif 114 = (Motif= CUAC, Hamming Distance Total= 0)
+
+Motif 115 = (Motif= CUAG, Hamming Distance Total= 0)
+
+Motif 116 = (Motif= CUAU, Hamming Distance Total= 0)
+
+Motif 117 = (Motif= CUCA, Hamming Distance Total= 0)
+
+Motif 118 = (Motif= CUCC, Hamming Distance Total= 0)
+
+Motif 119 = (Motif= CUCG, Hamming Distance Total= 0)
+
+Motif 120 = (Motif= CUCU, Hamming Distance Total= 0)
+
+Motif 121 = (Motif= CUGA, Hamming Distance Total= 0)
+
+Motif 122 = (Motif= CUGC, Hamming Distance Total= 0)
+
+Motif 123 = (Motif= CUGG, Hamming Distance Total= 0)
+
+Motif 124 = (Motif= CUGU, Hamming Distance Total= 0)
+
+Motif 125 = (Motif= CUUA, Hamming Distance Total= 0)
+
+Motif 126 = (Motif= CUUC, Hamming Distance Total= 0)
+
+Motif 127 = (Motif= CUUG, Hamming Distance Total= 0)
+
+Motif 128 = (Motif= CUUU, Hamming Distance Total= 0)
+
+Motif 129 = (Motif= GAAA, Hamming Distance Total= 0)
+
+Motif 130 = (Motif= GAAC, Hamming Distance Total= 0)
+
+Motif 131 = (Motif= GAAG, Hamming Distance Total= 0)
+
+Motif 132 = (Motif= GAAU, Hamming Distance Total= 0)
+
+Motif 133 = (Motif= GACA, Hamming Distance Total= 0)
+
+Motif 134 = (Motif= GACC, Hamming Distance Total= 0)
+
+Motif 135 = (Motif= GACG, Hamming Distance Total= 0)
+
+Motif 136 = (Motif= GACU, Hamming Distance Total= 0)
+
+Motif 137 = (Motif= GAGA, Hamming Distance Total= 0)
+
+Motif 138 = (Motif= GAGC, Hamming Distance Total= 0)
+
+Motif 139 = (Motif= GAGG, Hamming Distance Total= 0)
+
+Motif 140 = (Motif= GAGU, Hamming Distance Total= 0)
+
+Motif 141 = (Motif= GAUA, Hamming Distance Total= 0)
+
+Motif 142 = (Motif= GAUC, Hamming Distance Total= 0)
+
+Motif 143 = (Motif= GAUG, Hamming Distance Total= 0)
+
+Motif 144 = (Motif= GAUU, Hamming Distance Total= 0)
+
+Motif 145 = (Motif= GCAA, Hamming Distance Total= 0)
+
+Motif 146 = (Motif= GCAC, Hamming Distance Total= 0)
+
+Motif 147 = (Motif= GCAG, Hamming Distance Total= 0)
+
+Motif 148 = (Motif= GCAU, Hamming Distance Total= 0)
+
+Motif 149 = (Motif= GCCA, Hamming Distance Total= 0)
+
+Motif 150 = (Motif= GCCC, Hamming Distance Total= 0)
+
+Motif 151 = (Motif= GCCG, Hamming Distance Total= 0)
+
+Motif 152 = (Motif= GCCU, Hamming Distance Total= 0)
+
+Motif 153 = (Motif= GCGA, Hamming Distance Total= 0)
+
+Motif 154 = (Motif= GCGC, Hamming Distance Total= 0)
+
+Motif 155 = (Motif= GCGG, Hamming Distance Total= 0)
+
+Motif 156 = (Motif= GCGU, Hamming Distance Total= 0)
+
+Motif 157 = (Motif= GCUA, Hamming Distance Total= 0)
+
+Motif 158 = (Motif= GCUC, Hamming Distance Total= 0)
+
+Motif 159 = (Motif= GCUG, Hamming Distance Total= 0)
+
+Motif 160 = (Motif= GCUU, Hamming Distance Total= 0)
+
+Motif 161 = (Motif= GGAA, Hamming Distance Total= 0)
+
+Motif 162 = (Motif= GGAC, Hamming Distance Total= 0)
+
+Motif 163 = (Motif= GGAG, Hamming Distance Total= 0)
+
+Motif 164 = (Motif= GGAU, Hamming Distance Total= 0)
+
+Motif 165 = (Motif= GGCA, Hamming Distance Total= 0)
+
+Motif 166 = (Motif= GGCC, Hamming Distance Total= 0)
+
+Motif 167 = (Motif= GGCG, Hamming Distance Total= 0)
+
+Motif 168 = (Motif= GGCU, Hamming Distance Total= 0)
+
+Motif 169 = (Motif= GGGA, Hamming Distance Total= 0)
+
+Motif 170 = (Motif= GGGC, Hamming Distance Total= 0)
+
+Motif 171 = (Motif= GGGG, Hamming Distance Total= 0)
+
+Motif 172 = (Motif= GGGU, Hamming Distance Total= 0)
+
+Motif 173 = (Motif= GGUA, Hamming Distance Total= 0)
+
+Motif 174 = (Motif= GGUC, Hamming Distance Total= 0)
+
+Motif 175 = (Motif= GGUG, Hamming Distance Total= 0)
+
+Motif 176 = (Motif= GGUU, Hamming Distance Total= 0)
+
+Motif 177 = (Motif= GUAA, Hamming Distance Total= 0)
+
+Motif 178 = (Motif= GUAC, Hamming Distance Total= 0)
+
+Motif 179 = (Motif= GUAG, Hamming Distance Total= 0)
+
+Motif 180 = (Motif= GUAU, Hamming Distance Total= 0)
+
+Motif 181 = (Motif= GUCA, Hamming Distance Total= 0)
+
+Motif 182 = (Motif= GUCC, Hamming Distance Total= 0)
+
+Motif 183 = (Motif= GUCG, Hamming Distance Total= 0)
+
+Motif 184 = (Motif= GUCU, Hamming Distance Total= 0)
+
+Motif 185 = (Motif= GUGA, Hamming Distance Total= 0)
+
+Motif 186 = (Motif= GUGC, Hamming Distance Total= 0)
+
+Motif 187 = (Motif= GUGG, Hamming Distance Total= 0)
+
+Motif 188 = (Motif= GUGU, Hamming Distance Total= 0)
+
+Motif 189 = (Motif= GUUA, Hamming Distance Total= 0)
+
+Motif 190 = (Motif= GUUC, Hamming Distance Total= 0)
+
+Motif 191 = (Motif= GUUG, Hamming Distance Total= 0)
+
+Motif 192 = (Motif= GUUU, Hamming Distance Total= 0)
+
+Motif 193 = (Motif= UAAA, Hamming Distance Total= 0)
+
+Motif 194 = (Motif= UAAC, Hamming Distance Total= 0)
+
+Motif 195 = (Motif= UAAG, Hamming Distance Total= 0)
+
+Motif 196 = (Motif= UAAU, Hamming Distance Total= 0)
+
+Motif 197 = (Motif= UACA, Hamming Distance Total= 0)
+
+Motif 198 = (Motif= UACC, Hamming Distance Total= 0)
+
+Motif 199 = (Motif= UACG, Hamming Distance Total= 0)
+
+Motif 200 = (Motif= UACU, Hamming Distance Total= 0)
+
+Motif 201 = (Motif= UAGA, Hamming Distance Total= 0)
+
+Motif 202 = (Motif= UAGC, Hamming Distance Total= 0)
+
+Motif 203 = (Motif= UAGG, Hamming Distance Total= 0)
+
+Motif 204 = (Motif= UAGU, Hamming Distance Total= 0)
+
+Motif 205 = (Motif= UAUA, Hamming Distance Total= 0)
+
+Motif 206 = (Motif= UAUC, Hamming Distance Total= 0)
+
+Motif 207 = (Motif= UAUG, Hamming Distance Total= 0)
+
+Motif 208 = (Motif= UAUU, Hamming Distance Total= 0)
+
+Motif 209 = (Motif= UCAA, Hamming Distance Total= 0)
+
+Motif 210 = (Motif= UCAC, Hamming Distance Total= 0)
+
+Motif 211 = (Motif= UCAG, Hamming Distance Total= 0)
+
+Motif 212 = (Motif= UCAU, Hamming Distance Total= 0)
+
+Motif 213 = (Motif= UCCA, Hamming Distance Total= 0)
+
+Motif 214 = (Motif= UCCC, Hamming Distance Total= 0)
+
+Motif 215 = (Motif= UCCG, Hamming Distance Total= 0)
+
+Motif 216 = (Motif= UCCU, Hamming Distance Total= 0)
+
+Motif 217 = (Motif= UCGA, Hamming Distance Total= 0)
+
+Motif 218 = (Motif= UCGC, Hamming Distance Total= 0)
+
+Motif 219 = (Motif= UCGG, Hamming Distance Total= 0)
+
+Motif 220 = (Motif= UCGU, Hamming Distance Total= 0)
+
+Motif 221 = (Motif= UCUA, Hamming Distance Total= 0)
+
+Motif 222 = (Motif= UCUC, Hamming Distance Total= 0)
+
+Motif 223 = (Motif= UCUG, Hamming Distance Total= 0)
+
+Motif 224 = (Motif= UCUU, Hamming Distance Total= 0)
+
+Motif 225 = (Motif= UGAA, Hamming Distance Total= 0)
+
+Motif 226 = (Motif= UGAC, Hamming Distance Total= 0)
+
+Motif 227 = (Motif= UGAG, Hamming Distance Total= 0)
+
+Motif 228 = (Motif= UGAU, Hamming Distance Total= 0)
+
+Motif 229 = (Motif= UGCA, Hamming Distance Total= 0)
+
+Motif 230 = (Motif= UGCC, Hamming Distance Total= 0)
+
+Motif 231 = (Motif= UGCG, Hamming Distance Total= 0)
+
+Motif 232 = (Motif= UGCU, Hamming Distance Total= 0)
+
+Motif 233 = (Motif= UGGA, Hamming Distance Total= 0)
+
+Motif 234 = (Motif= UGGC, Hamming Distance Total= 0)
+
+Motif 235 = (Motif= UGGG, Hamming Distance Total= 0)
+
+Motif 236 = (Motif= UGGU, Hamming Distance Total= 0)
+
+Motif 237 = (Motif= UGUA, Hamming Distance Total= 0)
+
+Motif 238 = (Motif= UGUC, Hamming Distance Total= 0)
+
+Motif 239 = (Motif= UGUG, Hamming Distance Total= 0)
+
+Motif 240 = (Motif= UGUU, Hamming Distance Total= 0)
+
+Motif 241 = (Motif= UUAA, Hamming Distance Total= 0)
+
+Motif 242 = (Motif= UUAC, Hamming Distance Total= 0)
+
+Motif 243 = (Motif= UUAG, Hamming Distance Total= 0)
+
+Motif 244 = (Motif= UUAU, Hamming Distance Total= 0)
+
+Motif 245 = (Motif= UUCA, Hamming Distance Total= 0)
+
+Motif 246 = (Motif= UUCC, Hamming Distance Total= 0)
+
+Motif 247 = (Motif= UUCG, Hamming Distance Total= 0)
+
+Motif 248 = (Motif= UUCU, Hamming Distance Total= 0)
+
+Motif 249 = (Motif= UUGA, Hamming Distance Total= 0)
+
+Motif 250 = (Motif= UUGC, Hamming Distance Total= 0)
+
+Motif 251 = (Motif= UUGG, Hamming Distance Total= 0)
+
+Motif 252 = (Motif= UUGU, Hamming Distance Total= 0)
+
+Motif 253 = (Motif= UUUA, Hamming Distance Total= 0)
+
+Motif 254 = (Motif= UUUC, Hamming Distance Total= 0)
+
+Motif 255 = (Motif= UUUG, Hamming Distance Total= 0)
+
+Motif 256 = (Motif= UUUU, Hamming Distance Total= 0)
+
+Tempo de Busca(segundos): 0

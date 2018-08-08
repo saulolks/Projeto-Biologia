@@ -1,0 +1,32 @@
+Número de Sequências: 2
+Melhor Distância Hamming(min): 1
+
+Motif 1 = (Motif= AUCGGCCUCAGGCCG, Hamming Distance Total= 1)
+
+Motif 2 = (Motif= AUCGGCCUGAGGCCG, Hamming Distance Total= 1)
+
+Motif 3 = (Motif= AUCUCAGAGAUGGGC, Hamming Distance Total= 1)
+
+Motif 4 = (Motif= AUCUCAGAGAUGGUC, Hamming Distance Total= 1)
+
+Motif 5 = (Motif= CGGCCUCAGGCCGAU, Hamming Distance Total= 1)
+
+Motif 6 = (Motif= CGGCCUGAGGCCGAU, Hamming Distance Total= 1)
+
+Motif 7 = (Motif= GACCAUCUCUGAGAU, Hamming Distance Total= 1)
+
+Motif 8 = (Motif= GCCCAUCUCUGAGAU, Hamming Distance Total= 1)
+
+Motif 9 = (Motif= GGCCUCAGGCCGAUA, Hamming Distance Total= 1)
+
+Motif 10 = (Motif= GGCCUGAGGCCGAUA, Hamming Distance Total= 1)
+
+Motif 11 = (Motif= UAUCGGCCUCAGGCC, Hamming Distance Total= 1)
+
+Motif 12 = (Motif= UAUCGGCCUGAGGCC, Hamming Distance Total= 1)
+
+Motif 13 = (Motif= UCGGCCUCAGGCCGA, Hamming Distance Total= 1)
+
+Motif 14 = (Motif= UCGGCCUGAGGCCGA, Hamming Distance Total= 1)
+
+Tempo de Busca(segundos): 119
