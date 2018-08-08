@@ -12,7 +12,7 @@ public class questao_3 {
 	static ArrayList<char[]> dados = new ArrayList<>();
 	static ArrayList<String> ProtStr = new ArrayList<String>();
     static ArrayList<ArrayList<Motif>> motifS = new ArrayList<ArrayList<Motif>>();
-    static ArrayList<ArrayList<Motif>> cMotifS = new ArrayList<ArrayList<Motif>>();
+    static int bestMotifDistance;
 	public static void main (String[] args) throws IOException{
 			
 	 FileReader fileReader = new FileReader("sequencia.txt");
@@ -31,19 +31,8 @@ public class questao_3 {
 		 reader.close();
 		 
 		 
-		 
-	
 		char[][] amostra = dados.toArray(new char[t][n]);
 		
-		
-/*		
-		for(int i =0; i<t; i++){
-			 for(int j = 0; j<amostra[i].length; j++){
-				 System.out.print(amostra[i][j]);
-			 }
-			 System.out.println("");
-		 }
-*/		
 		for (int i=0; i<amostra.length;i++){
 		    for(int j=0; j<amostra[i].length; j++) {
 		    	if(amostra[i][j] == 'T'){
@@ -78,41 +67,26 @@ public class questao_3 {
 		 entrada.close();
 		 for(int i = 0; i<amostra.length; i++) {
 			 motifS.add(new ArrayList<Motif>());
-			 cMotifS.add(new ArrayList<Motif>());
 		 }
 		 System.out.println("Número de Sequências: " + amostra.length);
 		 long tempoInicio = System.currentTimeMillis();
-		 System.out.println("Best Word = " + BranchAndBoundMotifSearch(amostra,t,n,tMotif));
 		 
-		 
-		
-		 for (int j = 0; j<motifS.size(); j++) {
-			 System.out.println("Sequencia: " + (j+1) + "\n\n");
-			 System.out.print(motifS.get(j).toString());
+		 ArrayList<Motif> bestMotifS = BranchAndBoundMotifSearch(amostra,t,n,tMotif);
+		 for(int i = 0; i<bestMotifS.size(); i++) {
+			 System.out.println("Motif " + (i+1) + " = " + bestMotifS.get(i).toString());
 		 }
-		 
-		 
-		 long tempoFinal = (System.currentTimeMillis());
+		 long tempoFinal = System.currentTimeMillis();
 		 System.out.println("\nTempo de Busca(s): " + (tempoFinal - tempoInicio)/1000);
-		 
-		 //System.out.println("Complemento Reverso - Best Word = " + BranchAndBoundMotifSearch(cAmostra,t,n,tMotif, 1));
-		/* 
-		 for(int i = 0; i<cMotifS.size(); i++) {
-			 for (int j = 0; j<cMotifS.size(); j++) {
-				 System.out.println(cMotifS.get(j).toString());
-			 }	 
-		 }
-		 */
  }
 	
-	public static String BranchAndBoundMotifSearch(char[][] DNA, int t, int n,int l){
+	public static ArrayList<Motif> BranchAndBoundMotifSearch(char[][] DNA, int t, int n,int l){
 		int[] v = new int[l];
 		for(int j=0; j<l; j++){
 			v[j] = 1;
 		}
 		int bestDistance = 99999;
-		String bestWord = new String();
 		int i = 1;
+		ArrayList<Motif> bestMotifS = new ArrayList<Motif>();
 	  
 		while (i>0){
 			if (i<l){
@@ -141,16 +115,25 @@ public class questao_3 {
 					else if(v[j]==3) word+="G";
 					else if(v[j]==4) word+="U";
 				}
-				if(totaldistance(word, DNA, l)<bestDistance){
+				int minDistance = totaldistance(word, DNA, l);
+				if(minDistance < bestDistance){
+					bestMotifS = new ArrayList<Motif>();
 					bestDistance = totaldistance(word, DNA, l);
-					bestWord = word;
+					bestMotifDistance = bestDistance;
+					bestMotifS.add(new Motif(bestDistance,0,word));
+				}
+				
+				else if(totaldistance(word, DNA, l) == bestDistance){	
+					bestDistance = totaldistance(word, DNA, l);
+					bestMotifS.add(new Motif(bestDistance,0,word));
+					bestMotifDistance = bestDistance;										
 				}
 				Info retorno = nextvertex(v, i, l, 4);
 				v = retorno.getA();
 				i = retorno.getI();
 			}
 		}		
-		return bestWord;
+		return bestMotifS;
 	}
 	
 	public static int totaldistance(String prefix, char DNA[][], int l){

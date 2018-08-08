@@ -32,7 +32,7 @@ public void setMotif(String motif) {
 }
 @Override
 public String toString() {
-	return "(Motif= " + motif + ", Pos. Inicial= " + posinic + ", Hamming Distance= " + hamdis +  ")\n";
+	return "(Motif= " + motif + ", Hamming Distance Total= " + hamdis +  ")\n";
 }
 @Override
 public boolean equals(Object obj) {
