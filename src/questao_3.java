@@ -80,7 +80,7 @@ public class questao_3 {
 		 
 		 ArrayList<Motif> bestMotifS = BranchAndBoundMotifSearch(amostra,t,n,tMotif);
 		 
-		 FileWriter arq = new FileWriter("Saida Motif 15.txt");
+		 FileWriter arq = new FileWriter("Saida.txt");
 		 PrintWriter gravarArq = new PrintWriter(arq);
 		 
 		 gravarArq.println("Número de Sequências: " + amostra.length); 
